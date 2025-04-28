@@ -9,6 +9,7 @@ Tanto el ATTiny85 como el Wemos D1 Mini son programables, lo que permite:
 <li>Configurar la forma en que se detectan los eventos (apertura/cierre).</li>
 <li>Personalizar la forma de envío (por ejemplo, hacer solicitudes HTTP a tu propio sistema).</li>
 <li>Además, el ATTiny85 puede ser modificado para trabajar en base a intervalos de tiempo, utilizando librerías como <a href="https://github.com/connornishijima/TinySnore">TinySnore</a>, mejorando aún más la eficiencia energética y permitiendo distintas estrategias de notificación.</li>
+![alt text](https://github.com/LucasPifo/Sensor-Magnetico-Wifi/blob/main/Sensor%20completo.jpeg?raw=true)
 
 ## Problemática que se buscaba resolver
 En una planta industrial se requería un sistema para:
@@ -48,8 +49,11 @@ El MOSFET AO3413, que es de montaje superficial (SMD).
 <li>1x Imán</li>
 <li>Resistencias: 220 Ω, 1 kΩ, 10 kΩ, 46 kΩ, 100 kΩ, 220 kΩ, 1 MΩ</li>
 
-Diagrama de conexión
-(Aquí puedes agregar un diagrama esquemático si deseas.)
+## Diagrama de conexión
+![alt text](https://github.com/LucasPifo/Sensor-Magnetico-Wifi/blob/main/Esquema%20electronico.jpg?raw=true)
+
+## PCB
+![alt text](https://github.com/LucasPifo/Sensor-Magnetico-Wifi/blob/main/Dise%C3%B1o%20PCB.png?raw=true)
 
 ## Cómo funciona
 El funcionamiento del sensor se basa en lograr máxima eficiencia energética y una respuesta inmediata ante eventos de apertura o cierre. El proceso completo es el siguiente:
