@@ -9,6 +9,7 @@ Tanto el ATTiny85 como el Wemos D1 Mini son programables, lo que permite:
 <li>Configurar la forma en que se detectan los eventos (apertura/cierre).</li>
 <li>Personalizar la forma de envío (por ejemplo, hacer solicitudes HTTP a tu propio sistema).</li>
 <li>Además, el ATTiny85 puede ser modificado para trabajar en base a intervalos de tiempo, utilizando librerías como <a href="https://github.com/connornishijima/TinySnore">TinySnore</a>, mejorando aún más la eficiencia energética y permitiendo distintas estrategias de notificación.</li>
+
 ![alt text](https://github.com/LucasPifo/Sensor-Magnetico-Wifi/blob/main/Sensor%20completo.jpeg?raw=true)
 
 ## Problemática que se buscaba resolver
