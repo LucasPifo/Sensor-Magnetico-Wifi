@@ -93,3 +93,68 @@ Se creará una red WiFi con los siguientes datos:
 Conectándose a esa red y accediendo a **http://192.168.4.1**, se podrá:
 Agregar una nueva red WiFi.
 **Asignar una IP fija al módulo (extremadamente recomendado).**
+
+## Consumo (Ejemplo)
+
+A continuación se presenta un ejemplo aproximado del consumo energético del dispositivo en una configuración típica:
+
+- **Modo stand-by (reed switch cerrado):**  
+  Consumo: ~0.1 mA
+
+- **Modo activo (ESP encendido):**  
+  Consumo: ~80 mA  
+  Duración activa estimada: entre 5 y 8 segundos (en condiciones óptimas con IP fija)
+
+- **Promedio de activaciones por día:**  
+  - 15 aperturas + 15 cierres = 30 activaciones  
+  - Promedio de duración por activación: 7 segundos  
+  - Tiempo total activo diario: 30 × 7s = 210 segundos = 3.5 minutos
+
+- **Consumo diario aproximado:**  
+  - En modo activo:  
+    80 mA × (3.5 / 60) horas = 4.67 mAh  
+  - En modo stand-by (23.94 horas restantes):  
+    0.1 mA × 23.94 horas = 2.394 mAh
+
+- **Consumo total diario:**  
+  4.67 mAh + 2.394 mAh = 7.06 mAh
+
+- **Batería utilizada:**  
+  3000 mAh
+
+- **Autonomía estimada:**  
+  3000 mAh / 7.06 mAh ≈ 425 días  
+  Es decir, **aproximadamente 1 año y 2 meses** de funcionamiento continuo con una sola carga (en condiciones óptimas).
+
+> ⚠️ Nota: Esta estimación puede variar dependiendo de la calidad de la señal WiFi, el estado de la batería, temperatura ambiente, y otros factores externos que pueden influir en los tiempos de conexión y consumo energético.
+
+## Mejoras
+
+El circuito es un prototipo funcional y se encuentra en la versión 0.1, por lo que aún hay diversas áreas que pueden ser optimizadas:
+
+- **Tamaño:**  
+  Se puede reemplazar la placa Wemos D1 Mini por un ESP8266 E12 y cambiar todos los componentes a montaje superficial (SMD). Esto reduciría considerablemente tanto el tamaño como el costo de fabricación, aunque aumentaría la complejidad del ensamblaje.
+
+- **Compuerta XOR en lugar del ATTiny85:**  
+  Si no se requiere cambiar el firmware, una alternativa es utilizar una compuerta lógica 74HC86 (XOR) para la detección de cambios de estado en el reed switch. Esta opción reduciría significativamente el costo y el tamaño del circuito, ya que el ATTiny85 es más caro y voluminoso en comparación con una compuerta lógica (especialmente en versión SMD).
+
+- **Batería:**  
+  Se puede añadir un circuito adicional que permita la recarga de la batería, lo que evitaría tener que desmontar el sensor para cargarla manualmente.
+
+- **Comunicación inalámbrica (ESP-NOW):**  
+  Actualmente, la comunicación se realiza vía WiFi, lo cual puede no ser ideal en entornos industriales donde no hay cobertura WiFi completa. Una solución sería utilizar ESP-NOW para crear una red mallada entre sensores. Sin embargo, esto requeriría una planificación adecuada para asegurar que los nodos puedan retransmitir los datos hasta alcanzar un punto con acceso a servidor.
+
+- **WiFi por LoRa:**  
+  Otra opción más robusta sería integrar un módulo LoRa, permitiendo una comunicación de largo alcance entre sensores y gateway. Esta solución es ideal para entornos industriales grandes, aunque implicaría un aumento en el costo del dispositivo.
+
+- **Actualización OTA:**  
+  Al utilizar el ATTiny85, es posible programarlo con la librería [TinySnore](https://github.com/connornishijima/TinySnore) para que despierte al ESP8266 a una hora específica del día. Esto permitiría que el ESP consulte un endpoint de actualización y, en caso necesario, se actualice automáticamente vía OTA, facilitando la gestión y mantenimiento masivo de múltiples sensores en campo.
+
+## Referencias y recursos utilizados
+
+- [Circuito de encendido automatico con enclavamiento](https://randomnerdtutorials.com/power-saving-latching-circuit/)
+- [TinySnore: Librería para sleep profundo en ATTiny85](https://github.com/connornishijima/TinySnore)
+
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-ESP8266-blue)
+![Status](https://img.shields.io/badge/status-en%20desarrollo-yellow)
